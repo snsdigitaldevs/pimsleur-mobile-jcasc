@@ -1,0 +1,144 @@
+credentials:
+  folder: {
+    }
+  providerImpl: {
+    }
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "github_access_token"
+          password: "${GITHUB_ACCESS_TOKEN}"
+          scope: GLOBAL
+          username: "haozhutw"
+      - string:
+          id: "sonarqube_token"
+          scope: GLOBAL
+          secret: "${SONARQUBE_TOKEN}"
+      - string:
+          id: "GEMINI_API_KEY"
+          scope: GLOBAL
+          secret: "${GEMINI_API_KEY}"
+      - string:
+          id: "WECOM_KEY"
+          scope: GLOBAL
+          secret: "${WECOM_KEY}"
+      - string:
+          id: "ANTHROPIC_API_KEY"
+          scope: GLOBAL
+          secret: "${ANTHROPIC_API_KEY}"
+      domain: {
+        }
+  user: {
+    }
+
+jenkins:
+  authorizationStrategy:
+    globalMatrix:
+      entries:
+      - group:
+          name: "authenticated"
+          permissions:
+          - "Agent/Build"
+          - "Agent/Configure"
+          - "Agent/Create"
+          - "Agent/Disconnect"
+          - "Agent/Provision"
+          - "Credentials/Create"
+          - "Credentials/Update"
+          - "Credentials/View"
+          - "Job/Build"
+          - "Job/Cancel"
+          - "Job/Configure"
+          - "Job/Create"
+          - "Job/Discover"
+          - "Job/Move"
+          - "Job/Read"
+          - "Job/Workspace"
+          - "Metrics/View"
+          - "Overall/Read"
+          - "Run/Update"
+          - "View/Configure"
+          - "View/Create"
+          - "View/Read"
+      - user:
+          name: "haozhutw"
+          permissions:
+          - "Overall/Administer"
+      - user:
+          name: "wlyunn"
+          permissions:
+          - "Agent/Build"
+          - "Agent/Configure"
+          - "Agent/Connect"
+          - "Agent/Create"
+          - "Agent/Disconnect"
+          - "Agent/Provision"
+          - "Credentials/Create"
+          - "Credentials/Update"
+          - "Credentials/View"
+          - "Job/Build"
+          - "Job/Cancel"
+          - "Job/Configure"
+          - "Job/Create"
+          - "Job/Discover"
+          - "Job/Move"
+          - "Job/Read"
+          - "Job/Workspace"
+          - "Metrics/View"
+          - "Overall/Read"
+          - "Run/Update"
+          - "View/Configure"
+          - "View/Create"
+          - "View/Read"
+      - user:
+          name: "zhaokang555"
+          permissions:
+          - "Overall/Administer"
+      - user:
+          name: "zhenhuidev"
+          permissions:
+          - "Overall/Administer"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  remotingSecurity:
+    enabled: true
+  securityRealm:
+    github:
+      clientID: "${GITHUB_CLIENT_ID}"
+      clientSecret: "${GITHUB_CLIENT_SECRET}"
+      githubApiUri: "https://api.github.com"
+      githubWebUri: "https://github.com"
+      oauthScopes: "read:org,user:email,repo"
+
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  apiTokenProperty: {
+    }
+  cps:
+    hideSandbox: false
+  crumb: {
+    }
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  prism: {
+    }
+  queueItemAuthenticator: {
+    }
+  scriptApproval:
+    forceSandbox: false
+  updateSiteWarningsConfiguration: {
+    }

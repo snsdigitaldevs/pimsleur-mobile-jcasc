@@ -1,109 +1,13 @@
-configuration-as-code: {
-  }
-credentials:
-  folder: {
-    }
-  providerImpl: {
-    }
-  system:
-    domainCredentials:
-    - credentials:
-      - usernamePassword:
-          id: "github_access_token"
-          password: "${GITHUB_ACCESS_TOKEN}"
-          scope: GLOBAL
-          username: "haozhutw"
-      - string:
-          id: "sonarqube_token"
-          scope: GLOBAL
-          secret: "${SONARQUBE_TOKEN}"
-      - string:
-          id: "GEMINI_API_KEY"
-          scope: GLOBAL
-          secret: "${GEMINI_API_KEY}"
-      - string:
-          id: "WECOM_KEY"
-          scope: GLOBAL
-          secret: "${WECOM_KEY}"
-      - string:
-          id: "ANTHROPIC_API_KEY"
-          scope: GLOBAL
-          secret: "${ANTHROPIC_API_KEY}"
-      domain: {
-        }
-  user: {
-    }
+configuration-as-code:
+  # This main file now loads the other configuration files
+  # from the casc_configs directory
+  configurations:
+    # Updated paths for macOS Jenkins Home
+    - file: ${HOME}/.jenkins/mobile_jcasc/casc_configs/security.yaml
+    - file: ${HOME}/.jenkins/mobile_jcasc/casc_configs/jobs.yaml
+    - file: ${HOME}/.jenkins/mobile_jcasc/casc_configs/tools.yaml
+
 jenkins:
-  authorizationStrategy:
-    globalMatrix:
-      entries:
-      - group:
-          name: "authenticated"
-          permissions:
-          - "Agent/Build"
-          - "Agent/Configure"
-          - "Agent/Create"
-          - "Agent/Disconnect"
-          - "Agent/Provision"
-          - "Credentials/Create"
-          - "Credentials/Update"
-          - "Credentials/View"
-          - "Job/Build"
-          - "Job/Cancel"
-          - "Job/Configure"
-          - "Job/Create"
-          - "Job/Discover"
-          - "Job/Move"
-          - "Job/Read"
-          - "Job/Workspace"
-          - "Metrics/View"
-          - "Overall/Read"
-          - "Run/Update"
-          - "View/Configure"
-          - "View/Create"
-          - "View/Read"
-      - user:
-          name: "haozhutw"
-          permissions:
-          - "Overall/Administer"
-      - user:
-          name: "wlyunn"
-          permissions:
-          - "Agent/Build"
-          - "Agent/Configure"
-          - "Agent/Connect"
-          - "Agent/Create"
-          - "Agent/Disconnect"
-          - "Agent/Provision"
-          - "Credentials/Create"
-          - "Credentials/Update"
-          - "Credentials/View"
-          - "Job/Build"
-          - "Job/Cancel"
-          - "Job/Configure"
-          - "Job/Create"
-          - "Job/Discover"
-          - "Job/Move"
-          - "Job/Read"
-          - "Job/Workspace"
-          - "Metrics/View"
-          - "Overall/Read"
-          - "Run/Update"
-          - "View/Configure"
-          - "View/Create"
-          - "View/Read"
-      - user:
-          name: "zhaokang555"
-          permissions:
-          - "Overall/Administer"
-      - user:
-          name: "zhenhuidev"
-          permissions:
-          - "Overall/Administer"
-  crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: false
-  disableRememberMe: false
   disabledAdministrativeMonitors:
   - "jenkins.diagnostics.ControllerExecutorsNoAgents"
   - "hudson.util.DoubleLaunchChecker"
@@ -135,7 +39,6 @@ jenkins:
     }
   markupFormatter: "plainText"
   mode: NORMAL
-  myViewsTabBar: "standard"
   noUsageStatistics: true
   nodeMonitors:
   - "architecture"
@@ -160,61 +63,15 @@ jenkins:
       - key: "LC_ALL"
         value: "en_US.UTF-8"
   numExecutors: 4
-  primaryView:
-    all:
-      description: "This Jenkins is mainly used for building Pimsleur mobile apps.\
-        \ 🎉🎉🎉"
-      name: "all"
   projectNamingStrategy: "standard"
   quietPeriod: 5
-  remotingSecurity:
-    enabled: true
   scmCheckoutRetryCount: 0
-  securityRealm:
-    github:
-      clientID: "${GITHUB_CLIENT_ID}"
-      clientSecret: "${GITHUB_CLIENT_SECRET}"
-      githubApiUri: "https://api.github.com"
-      githubWebUri: "https://github.com"
-      oauthScopes: "read:org,user:email,repo"
   slaveAgentPort: -1
   updateCenter:
     sites:
     - id: "default"
       url: "https://updates.jenkins.io/update-center.json"
-  views:
-  - buildMonitor:
-      config:
-        displayBadgesFrom: "getLastBuild"
-        order: "byName"
-      jobNames:
-      - "Android_Release"
-      - "Android_Release/maintenance"
-      - "Android_Release/master"
-      - "Android_Release/release"
-      - "Android_Test"
-      - "Android_Test/maintenance"
-      - "Android_Test/master"
-      - "iOS_Release"
-      - "iOS_Release/maintenance"
-      - "iOS_Release/master"
-      - "iOS_Release/release"
-      - "iOS_Test"
-      - "iOS_Test/maintenance"
-      - "iOS_Test/master"
-      - "pimsleur_ecom_e2e_test"
-      name: "Monitor"
-      recurse: true
-      title: "Monitor"
-  - all:
-      description: "This Jenkins is mainly used for building Pimsleur mobile apps.\
-        \ 🎉🎉🎉"
-      name: "all"
-  viewsTabBar: "standard"
-globalCredentialsConfiguration:
-  configuration:
-    providerFilter: "none"
-    typeFilter: "none"
+
 appearance:
   consoleUrlProvider: {
     }
@@ -226,40 +83,12 @@ appearance:
   themeManager:
     disableUserThemes: false
     theme: "noOp"
-security:
-  apiToken:
-    creationOfLegacyTokenEnabled: false
-    tokenGenerationOnCreationEnabled: false
-    usageStatisticsEnabled: true
-  apiTokenProperty: {
-    }
-  cps:
-    hideSandbox: false
-  crumb: {
-    }
-  gitHooks:
-    allowedOnAgents: false
-    allowedOnController: false
-  gitHostKeyVerificationConfiguration:
-    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
-  prism: {
-    }
-  queueItemAuthenticator: {
-    }
-  scriptApproval:
-    forceSandbox: false
-  updateSiteWarningsConfiguration: {
-    }
+
 unclassified:
   administrativeMonitorsConfiguration: {
     }
   artifactManager: {
     }
-  buildDiscarders:
-    configuredBuildDiscarders:
-    - "jobBuildDiscarder"
-  buildMonitorView:
-    permissionToCollectAnonymousUsageStatistics: false
   buildStepOperation:
     enabled: false
   builtInNode: {
@@ -269,12 +98,6 @@ unclassified:
   computerRetentionCheckInterval: {
     }
   defaultDisplayUrlProvider: {
-    }
-  defaultFolderConfiguration:
-    healthMetrics:
-    - worstChildHealthMetric:
-        recursive: true
-  defaultView: {
     }
   email-ext:
     adminRequiredForTemplateTesting: false
@@ -312,16 +135,6 @@ unclassified:
     hookUrl: "http://localhost:8080/github-webhook/"
   githubPullRequests:
     actualiseOnFactory: false
-  globalDefaultFlowDurabilityLevel: {
-    }
-  globalLibraries: {
-    }
-  globalTimeOutConfiguration:
-    operations:
-    - "abortOperation"
-    overwriteable: false
-  globalUntrustedLibraries: {
-    }
   injectionConfig:
     allowUntrusted: false
     checkForBuildAgentErrors: false
@@ -341,8 +154,6 @@ unclassified:
     useSsl: false
     useTls: false
   metricsAccessKey: {
-    }
-  myView: {
     }
   nodeProperties: {
     }
@@ -370,30 +181,10 @@ unclassified:
     }
   shell: {
     }
-  sonarGlobalConfiguration:
-    buildWrapperEnabled: true
-    installations:
-    - credentialsId: "sonarqube_token"
-      name: "SonarQube"
-      serverUrl: "${SONARQUBE_SERVER_URL}"
-      triggers:
-        skipScmCause: false
-        skipUpstreamCause: false
-  sonarQualityGates: {
-    }
   timestamper:
     allPipelines: false
     elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
     systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
   usageStatistics: {
     }
-  viewsTabBar: {
-    }
-tool:
-  git:
-    installations:
-    - home: "git"
-      name: "Default"
-  mavenGlobalConfig:
-    globalSettingsProvider: "standard"
-    settingsProvider: "standard"
+

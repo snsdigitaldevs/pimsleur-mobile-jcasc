@@ -1,0 +1,63 @@
+jenkins:
+  myViewsTabBar: "standard"
+  primaryView:
+    all:
+      description: "This Jenkins is mainly used for building Pimsleur mobile apps.\
+        \ 🎉🎉🎉"
+      name: "all"
+  views:
+  - buildMonitor:
+      config:
+        displayBadgesFrom: "getLastBuild"
+        order: "byName"
+      jobNames:
+      - "Android_Release"
+      - "Android_Release/maintenance"
+      - "Android_Release/master"
+      - "Android_Release/release"
+      - "Android_Test"
+      - "Android_Test/maintenance"
+      - "Android_Test/master"
+      - "iOS_Release"
+      - "iOS_Release/maintenance"
+      - "iOS_Release/master"
+      - "iOS_Release/release"
+      - "iOS_Test"
+      - "iOS_Test/maintenance"
+      - "iOS_Test/master"
+      - "pimsleur_ecom_e2e_test"
+      name: "Monitor"
+      recurse: true
+      title: "Monitor"
+  - all:
+      description: "This Jenkins is mainly used for building Pimsleur mobile apps.\
+        \ 🎉🎉🎉"
+      name: "all"
+  viewsTabBar: "standard"
+
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildMonitorView:
+    permissionToCollectAnonymousUsageStatistics: false
+  defaultFolderConfiguration:
+    healthMetrics:
+    - worstChildHealthMetric:
+        recursive: true
+  defaultView: {
+    }
+  globalDefaultFlowDurabilityLevel: {
+    }
+  globalLibraries: {
+    }
+  globalTimeOutConfiguration:
+    operations:
+    - "abortOperation"
+    overwriteable: false
+  globalUntrustedLibraries: {
+    }
+  myView: {
+    }
+  viewsTabBar: {
+    }
