@@ -1,0 +1,399 @@
+configuration-as-code: {
+  }
+credentials:
+  folder: {
+    }
+  providerImpl: {
+    }
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "github_access_token"
+          password: "${GITHUB_ACCESS_TOKEN}"
+          scope: GLOBAL
+          username: "haozhutw"
+      - string:
+          id: "sonarqube_token"
+          scope: GLOBAL
+          secret: "${SONARQUBE_TOKEN}"
+      - string:
+          id: "GEMINI_API_KEY"
+          scope: GLOBAL
+          secret: "${GEMINI_API_KEY}"
+      - string:
+          id: "WECOM_KEY"
+          scope: GLOBAL
+          secret: "${WECOM_KEY}"
+      - string:
+          id: "ANTHROPIC_API_KEY"
+          scope: GLOBAL
+          secret: "${ANTHROPIC_API_KEY}"
+      domain: {
+        }
+  user: {
+    }
+jenkins:
+  authorizationStrategy:
+    globalMatrix:
+      entries:
+      - group:
+          name: "authenticated"
+          permissions:
+          - "Agent/Build"
+          - "Agent/Configure"
+          - "Agent/Create"
+          - "Agent/Disconnect"
+          - "Agent/Provision"
+          - "Credentials/Create"
+          - "Credentials/Update"
+          - "Credentials/View"
+          - "Job/Build"
+          - "Job/Cancel"
+          - "Job/Configure"
+          - "Job/Create"
+          - "Job/Discover"
+          - "Job/Move"
+          - "Job/Read"
+          - "Job/Workspace"
+          - "Metrics/View"
+          - "Overall/Read"
+          - "Run/Update"
+          - "View/Configure"
+          - "View/Create"
+          - "View/Read"
+      - user:
+          name: "haozhutw"
+          permissions:
+          - "Overall/Administer"
+      - user:
+          name: "wlyunn"
+          permissions:
+          - "Agent/Build"
+          - "Agent/Configure"
+          - "Agent/Connect"
+          - "Agent/Create"
+          - "Agent/Disconnect"
+          - "Agent/Provision"
+          - "Credentials/Create"
+          - "Credentials/Update"
+          - "Credentials/View"
+          - "Job/Build"
+          - "Job/Cancel"
+          - "Job/Configure"
+          - "Job/Create"
+          - "Job/Discover"
+          - "Job/Move"
+          - "Job/Read"
+          - "Job/Workspace"
+          - "Metrics/View"
+          - "Overall/Read"
+          - "Run/Update"
+          - "View/Configure"
+          - "View/Create"
+          - "View/Read"
+      - user:
+          name: "zhaokang555"
+          permissions:
+          - "Overall/Administer"
+      - user:
+          name: "zhenhuidev"
+          permissions:
+          - "Overall/Administer"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "jenkins.diagnostics.ControllerExecutorsNoAgents"
+  - "hudson.util.DoubleLaunchChecker"
+  - "hudson.diagnosis.ReverseProxySetupMonitor"
+  globalNodeProperties:
+  - envVars:
+      env:
+      - key: "APPSTORE_ISSUER_ID"
+        value: "${APPSTORE_ISSUER_ID}"
+      - key: "APPSTORE_KEY_CONTENT"
+        value: "${APPSTORE_KEY_CONTENT}"
+      - key: "APPSTORE_KEY_ID"
+        value: "${APPSTORE_KEY_ID}"
+      - key: "FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"
+        value: "${FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}"
+      - key: "FASTLANE_SESSION"
+        value: "${FASTLANE_SESSION}"
+      - key: "FASTLANE_XCODEBUILD_SETTINGS_RETRIES"
+        value: "5"
+      - key: "FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"
+        value: "10"
+      - key: "FIREBASE_TOKEN"
+        value: "${FIREBASE_TOKEN}"
+      - key: "PATH"
+        value: "/usr/bin:/bin:/usr/local/bin:/usr/sbin:${HOME}/Library/Android/sdk/tools:${HOME}/Library/Android/sdk/platform-tools:${HOME}/Library/Android/sdk/emulator:${HOME}/Library/Android/sdk/tools/bin:/opt/homebrew/bin:${HOME}/.nvm/versions/node/v16.20.2/bin:${HOME}/Library/sonar-scanner-7.1.0/bin"
+  labelAtoms:
+  - name: "built-in"
+  log: {
+    }
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  noUsageStatistics: true
+  nodeMonitors:
+  - "architecture"
+  - "clock"
+  - diskSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "swapSpace"
+  - tmpSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "responseTime"
+  nodeProperties:
+  - envVars:
+      env:
+      - key: "ANDROID_HOME"
+        value: "${HOME}/Library/Android/sdk"
+      - key: "JAVA_HOME"
+        value: "${HOME}/Library/Java/JavaVirtualMachines/corretto-17.0.15/Contents/Home"
+      - key: "LANG"
+        value: "en_US.UTF-8"
+      - key: "LC_ALL"
+        value: "en_US.UTF-8"
+  numExecutors: 4
+  primaryView:
+    all:
+      description: "This Jenkins is mainly used for building Pimsleur mobile apps.\
+        \ 🎉🎉🎉"
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    github:
+      clientID: "${GITHUB_CLIENT_ID}"
+      clientSecret: "${GITHUB_CLIENT_SECRET}"
+      githubApiUri: "https://api.github.com"
+      githubWebUri: "https://github.com"
+      oauthScopes: "read:org,user:email,repo"
+  slaveAgentPort: -1
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - buildMonitor:
+      config:
+        displayBadgesFrom: "getLastBuild"
+        order: "byName"
+      jobNames:
+      - "Android_Release"
+      - "Android_Release/maintenance"
+      - "Android_Release/master"
+      - "Android_Release/release"
+      - "Android_Test"
+      - "Android_Test/maintenance"
+      - "Android_Test/master"
+      - "iOS_Release"
+      - "iOS_Release/maintenance"
+      - "iOS_Release/master"
+      - "iOS_Release/release"
+      - "iOS_Test"
+      - "iOS_Test/maintenance"
+      - "iOS_Test/master"
+      - "pimsleur_ecom_e2e_test"
+      name: "Monitor"
+      recurse: true
+      title: "Monitor"
+  - all:
+      description: "This Jenkins is mainly used for building Pimsleur mobile apps.\
+        \ 🎉🎉🎉"
+      name: "all"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+appearance:
+  consoleUrlProvider: {
+    }
+  pipelineGraphView:
+    showGraphOnBuildPage: false
+    showGraphOnJobPage: false
+  prism:
+    theme: PRISM
+  themeManager:
+    disableUserThemes: false
+    theme: "noOp"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  apiTokenProperty: {
+    }
+  cps:
+    hideSandbox: false
+  crumb: {
+    }
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  prism: {
+    }
+  queueItemAuthenticator: {
+    }
+  scriptApproval:
+    forceSandbox: false
+  updateSiteWarningsConfiguration: {
+    }
+unclassified:
+  administrativeMonitorsConfiguration: {
+    }
+  artifactManager: {
+    }
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildMonitorView:
+    permissionToCollectAnonymousUsageStatistics: false
+  buildStepOperation:
+    enabled: false
+  builtInNode: {
+    }
+  casCGlobalConfig: {
+    }
+  computerRetentionCheckInterval: {
+    }
+  defaultDisplayUrlProvider: {
+    }
+  defaultFolderConfiguration:
+    healthMetrics:
+    - worstChildHealthMetric:
+        recursive: true
+  defaultView: {
+    }
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    mailAccount: {
+      }
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    throttlingEnabled: false
+    watchingEnabled: false
+  enrichedSummaryConfig:
+    enrichedSummaryEnabled: false
+    httpClientDelayBetweenRetriesInSeconds: 1
+    httpClientMaxRetries: 3
+    httpClientTimeoutInSeconds: 1
+  envVarsFilter: {
+    }
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://localhost:8080/github-webhook/"
+  githubPullRequests:
+    actualiseOnFactory: false
+  globalDefaultFlowDurabilityLevel: {
+    }
+  globalLibraries: {
+    }
+  globalTimeOutConfiguration:
+    operations:
+    - "abortOperation"
+    overwriteable: false
+  globalUntrustedLibraries: {
+    }
+  injectionConfig:
+    allowUntrusted: false
+    checkForBuildAgentErrors: false
+    enabled: false
+    enforceUrl: false
+    gradleCaptureTaskInputFiles: true
+    injectCcudExtension: false
+    injectMavenExtension: false
+    mavenCaptureGoalInputFiles: true
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://localhost:8080/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  metricsAccessKey: {
+    }
+  myView: {
+    }
+  nodeProperties: {
+    }
+  plugin: {
+    }
+  pollSCM:
+    pollingThreadCount: 10
+  projectNamingStrategy: {
+    }
+  proxyConfigurationManager: {
+    }
+  quietPeriod: {
+    }
+  resourceRoot: {
+    }
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  scmRetryCount: {
+    }
+  shell: {
+    }
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: true
+    installations:
+    - credentialsId: "sonarqube_token"
+      name: "SonarQube"
+      serverUrl: "${SONARQUBE_SERVER_URL}"
+      triggers:
+        skipScmCause: false
+        skipUpstreamCause: false
+  sonarQualityGates: {
+    }
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+  usageStatistics: {
+    }
+  viewsTabBar: {
+    }
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
