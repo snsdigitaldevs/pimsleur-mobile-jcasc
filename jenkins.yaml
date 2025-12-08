@@ -1,58 +1,57 @@
 jenkins:
   disabledAdministrativeMonitors:
-  - "jenkins.diagnostics.ControllerExecutorsNoAgents"
-  - "hudson.util.DoubleLaunchChecker"
-  - "hudson.diagnosis.ReverseProxySetupMonitor"
+    - "jenkins.diagnostics.ControllerExecutorsNoAgents"
+    - "hudson.util.DoubleLaunchChecker"
+    - "hudson.diagnosis.ReverseProxySetupMonitor"
   globalNodeProperties:
-  - envVars:
-      env:
-      - key: "APPSTORE_ISSUER_ID"
-        value: "${APPSTORE_ISSUER_ID}"
-      - key: "APPSTORE_KEY_CONTENT"
-        value: "${APPSTORE_KEY_CONTENT}"
-      - key: "APPSTORE_KEY_ID"
-        value: "${APPSTORE_KEY_ID}"
-      - key: "FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"
-        value: "${FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}"
-      - key: "FASTLANE_SESSION"
-        value: "${FASTLANE_SESSION}"
-      - key: "FASTLANE_XCODEBUILD_SETTINGS_RETRIES"
-        value: "5"
-      - key: "FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"
-        value: "10"
-      - key: "FIREBASE_TOKEN"
-        value: "${FIREBASE_TOKEN}"
-      - key: "PATH"
-        value: "/usr/bin:/bin:/usr/local/bin:/usr/sbin:${HOME}/Library/Android/sdk/tools:${HOME}/Library/Android/sdk/platform-tools:${HOME}/Library/Android/sdk/emulator:${HOME}/Library/Android/sdk/tools/bin:/opt/homebrew/bin:${HOME}/.nvm/versions/node/v16.20.2/bin:${HOME}/Library/sonar-scanner-7.1.0/bin"
+    - envVars:
+        env:
+          - key: "APPSTORE_ISSUER_ID"
+            value: "${APPSTORE_ISSUER_ID}"
+          - key: "APPSTORE_KEY_CONTENT"
+            value: "${APPSTORE_KEY_CONTENT}"
+          - key: "APPSTORE_KEY_ID"
+            value: "${APPSTORE_KEY_ID}"
+          - key: "FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"
+            value: "${FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}"
+          - key: "FASTLANE_SESSION"
+            value: "${FASTLANE_SESSION}"
+          - key: "FASTLANE_XCODEBUILD_SETTINGS_RETRIES"
+            value: "5"
+          - key: "FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"
+            value: "10"
+          - key: "FIREBASE_TOKEN"
+            value: "${FIREBASE_TOKEN}"
+          - key: "PATH"
+            value: "/usr/bin:/bin:/usr/local/bin:/usr/sbin:${HOME}/Library/Android/sdk/tools:${HOME}/Library/Android/sdk/platform-tools:${HOME}/Library/Android/sdk/emulator:${HOME}/Library/Android/sdk/tools/bin:/opt/homebrew/bin:${HOME}/.nvm/versions/node/v16.20.2/bin:${HOME}/Library/sonar-scanner-7.1.0/bin"
   labelAtoms:
-  - name: "built-in"
-  log: {
-    }
+    - name: "built-in"
+  log: {}
   markupFormatter: "plainText"
   mode: NORMAL
   noUsageStatistics: true
   nodeMonitors:
-  - "architecture"
-  - "clock"
-  - diskSpace:
-      freeSpaceThreshold: "1GiB"
-      freeSpaceWarningThreshold: "2GiB"
-  - "swapSpace"
-  - tmpSpace:
-      freeSpaceThreshold: "1GiB"
-      freeSpaceWarningThreshold: "2GiB"
-  - "responseTime"
+    - "architecture"
+    - "clock"
+    - diskSpace:
+        freeSpaceThreshold: "1GiB"
+        freeSpaceWarningThreshold: "2GiB"
+    - "swapSpace"
+    - tmpSpace:
+        freeSpaceThreshold: "1GiB"
+        freeSpaceWarningThreshold: "2GiB"
+    - "responseTime"
   nodeProperties:
-  - envVars:
-      env:
-      - key: "ANDROID_HOME"
-        value: "${HOME}/Library/Android/sdk"
-      - key: "JAVA_HOME"
-        value: "${HOME}/Library/Java/JavaVirtualMachines/corretto-17.0.15/Contents/Home"
-      - key: "LANG"
-        value: "en_US.UTF-8"
-      - key: "LC_ALL"
-        value: "en_US.UTF-8"
+    - envVars:
+        env:
+          - key: "ANDROID_HOME"
+            value: "${HOME}/Library/Android/sdk"
+          - key: "JAVA_HOME"
+            value: "${HOME}/Library/Java/JavaVirtualMachines/corretto-17.0.15/Contents/Home"
+          - key: "LANG"
+            value: "en_US.UTF-8"
+          - key: "LC_ALL"
+            value: "en_US.UTF-8"
   numExecutors: 4
   projectNamingStrategy: "standard"
   quietPeriod: 5
@@ -60,36 +59,29 @@ jenkins:
   slaveAgentPort: -1
   updateCenter:
     sites:
-    - id: "default"
-      url: "https://updates.jenkins.io/update-center.json"
-
-appearance:
-  consoleUrlProvider: {
-    }
-  pipelineGraphView:
-    showGraphOnBuildPage: false
-    showGraphOnJobPage: false
-  prism:
-    theme: PRISM
-  themeManager:
-    disableUserThemes: false
-    theme: "noOp"
+      - id: "default"
+        url: "https://updates.jenkins.io/update-center.json"
 
 unclassified:
-  administrativeMonitorsConfiguration: {
-    }
-  artifactManager: {
-    }
+  appearance:
+    consoleUrlProvider: {}
+    pipelineGraphView:
+      showGraphOnBuildPage: false
+      showGraphOnJobPage: false
+    prism:
+      theme: PRISM
+    themeManager:
+      disableUserThemes: false
+      theme: "noOp"
+
+  administrativeMonitorsConfiguration: {}
+  artifactManager: {}
   buildStepOperation:
     enabled: false
-  builtInNode: {
-    }
-  casCGlobalConfig: {
-    }
-  computerRetentionCheckInterval: {
-    }
-  defaultDisplayUrlProvider: {
-    }
+  builtInNode: {}
+  casCGlobalConfig: {}
+  computerRetentionCheckInterval: {}
+  defaultDisplayUrlProvider: {}
   email-ext:
     adminRequiredForTemplateTesting: false
     allowUnregisteredEnabled: false
@@ -102,9 +94,8 @@ unclassified:
     defaultContentType: "text/plain"
     defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
     defaultTriggerIds:
-    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
-    mailAccount: {
-      }
+      - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    mailAccount: {}
     maxAttachmentSize: -1
     maxAttachmentSizeMb: -1
     precedenceBulk: false
@@ -115,8 +106,7 @@ unclassified:
     httpClientDelayBetweenRetriesInSeconds: 1
     httpClientMaxRetries: 3
     httpClientTimeoutInSeconds: 1
-  envVarsFilter: {
-    }
+  envVarsFilter: {}
   fingerprints:
     fingerprintCleanupDisabled: false
     storage: "file"
@@ -144,22 +134,15 @@ unclassified:
     charset: "UTF-8"
     useSsl: false
     useTls: false
-  metricsAccessKey: {
-    }
-  nodeProperties: {
-    }
-  plugin: {
-    }
+  metricsAccessKey: {}
+  nodeProperties: {}
+  plugin: {}
   pollSCM:
     pollingThreadCount: 10
-  projectNamingStrategy: {
-    }
-  proxyConfigurationManager: {
-    }
-  quietPeriod: {
-    }
-  resourceRoot: {
-    }
+  projectNamingStrategy: {}
+  proxyConfigurationManager: {}
+  quietPeriod: {}
+  resourceRoot: {}
   scmGit:
     addGitTagAction: false
     allowSecondFetch: false
@@ -168,14 +151,10 @@ unclassified:
     hideCredentials: false
     showEntireCommitSummaryInChanges: false
     useExistingAccountWithSameEmail: false
-  scmRetryCount: {
-    }
-  shell: {
-    }
+  scmRetryCount: {}
+  shell: {}
   timestamper:
     allPipelines: false
     elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
     systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
-  usageStatistics: {
-    }
-
+  usageStatistics: {}
