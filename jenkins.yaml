@@ -1,12 +1,3 @@
-configuration-as-code:
-  # This main file now loads the other configuration files
-  # from the casc_configs directory
-  configurations:
-    # Updated paths for macOS Jenkins Home
-    - file: ${HOME}/.jenkins/mobile_jcasc/casc_configs/security.yaml
-    - file: ${HOME}/.jenkins/mobile_jcasc/casc_configs/jobs.yaml
-    - file: ${HOME}/.jenkins/mobile_jcasc/casc_configs/tools.yaml
-
 jenkins:
   disabledAdministrativeMonitors:
   - "jenkins.diagnostics.ControllerExecutorsNoAgents"
