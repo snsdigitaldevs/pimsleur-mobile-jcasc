@@ -24,12 +24,16 @@ jenkins:
             value: "${FIREBASE_TOKEN}"
           - key: "PATH"
             value: "/usr/bin:/bin:/usr/local/bin:/usr/sbin:${HOME}/Library/Android/sdk/tools:${HOME}/Library/Android/sdk/platform-tools:${HOME}/Library/Android/sdk/emulator:${HOME}/Library/Android/sdk/tools/bin:/opt/homebrew/bin:${HOME}/.nvm/versions/node/v16.20.2/bin:${HOME}/Library/sonar-scanner-7.1.0/bin"
+
   labelAtoms:
     - name: "built-in"
+
   log: {}
+
   markupFormatter: "plainText"
   mode: NORMAL
   noUsageStatistics: true
+
   nodeMonitors:
     - "architecture"
     - "clock"
@@ -41,6 +45,7 @@ jenkins:
         freeSpaceThreshold: "1GiB"
         freeSpaceWarningThreshold: "2GiB"
     - "responseTime"
+
   nodeProperties:
     - envVars:
         env:
@@ -52,33 +57,23 @@ jenkins:
             value: "en_US.UTF-8"
           - key: "LC_ALL"
             value: "en_US.UTF-8"
+
   numExecutors: 4
   projectNamingStrategy: "standard"
   quietPeriod: 5
   scmCheckoutRetryCount: 0
   slaveAgentPort: -1
+
   updateCenter:
     sites:
       - id: "default"
         url: "https://updates.jenkins.io/update-center.json"
 
 unclassified:
-  appearance:
-    consoleUrlProvider: {}
-    pipelineGraphView:
-      showGraphOnBuildPage: false
-      showGraphOnJobPage: false
-    prism:
-      theme: PRISM
-    themeManager:
-      disableUserThemes: false
-      theme: "noOp"
-
   administrativeMonitorsConfiguration: {}
   artifactManager: {}
   buildStepOperation:
     enabled: false
-  builtInNode: {}
   casCGlobalConfig: {}
   computerRetentionCheckInterval: {}
   defaultDisplayUrlProvider: {}
@@ -101,21 +96,25 @@ unclassified:
     precedenceBulk: false
     throttlingEnabled: false
     watchingEnabled: false
+
   enrichedSummaryConfig:
     enrichedSummaryEnabled: false
     httpClientDelayBetweenRetriesInSeconds: 1
     httpClientMaxRetries: 3
     httpClientTimeoutInSeconds: 1
+
   envVarsFilter: {}
+
   fingerprints:
     fingerprintCleanupDisabled: false
     storage: "file"
+
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
+
   gitHubPluginConfig:
     hookUrl: "http://localhost:8080/github-webhook/"
-  githubPullRequests:
-    actualiseOnFactory: false
+
   injectionConfig:
     allowUntrusted: false
     checkForBuildAgentErrors: false
@@ -125,24 +124,36 @@ unclassified:
     injectCcudExtension: false
     injectMavenExtension: false
     mavenCaptureGoalInputFiles: true
+
   junitTestResultStorage:
     storage: "file"
+
   location:
     adminAddress: "address not configured yet <nobody@nowhere>"
     url: "http://localhost:8080/"
+
   mailer:
     charset: "UTF-8"
     useSsl: false
     useTls: false
+
   metricsAccessKey: {}
+
   nodeProperties: {}
+
   plugin: {}
+
   pollSCM:
     pollingThreadCount: 10
+
   projectNamingStrategy: {}
+
   proxyConfigurationManager: {}
+
   quietPeriod: {}
+
   resourceRoot: {}
+
   scmGit:
     addGitTagAction: false
     allowSecondFetch: false
@@ -151,10 +162,14 @@ unclassified:
     hideCredentials: false
     showEntireCommitSummaryInChanges: false
     useExistingAccountWithSameEmail: false
+
   scmRetryCount: {}
+
   shell: {}
+
   timestamper:
     allPipelines: false
     elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
     systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+
   usageStatistics: {}
